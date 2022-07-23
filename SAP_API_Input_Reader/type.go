@@ -130,8 +130,99 @@ type SDC struct {
 		EntityLastChangedOn               string `json:"EntityLastChangedOn"`
 		ETag                              string `json:"ETag"`
 	} `json:"PartnerCollection"`
+	PartnerAddressCollection struct {
+		ObjectID                          string `json:"ObjectID"`
+		ParentObjectID                    string `json:"ParentObjectID"`
+		PartnerID                         string `json:"PartnerID"`
+		MainIndicator                     bool   `json:"MainIndicator"`
+		ShipTo                            bool   `json:"ShipTo"`
+		DefaultShipTo                     bool   `json:"DefaultShipTo"`
+		BillTo                            bool   `json:"BillTo"`
+		DefaultBillTo                     bool   `json:"DefaultBillTo"`
+		FormattedPostalAddressDescription string `json:"FormattedPostalAddressDescription"`
+		CountryCode                       string `json:"CountryCode"`
+		CountryCodeText                   string `json:"CountryCodeText"`
+		StateCode                         string `json:"StateCode"`
+		StateCodeText                     string `json:"StateCodeText"`
+		CareOfName                        string `json:"CareOfName"`
+		AddressLine1                      string `json:"AddressLine1"`
+		AddressLine2                      string `json:"AddressLine2"`
+		HouseNumber                       string `json:"HouseNumber"`
+		Street                            string `json:"Street"`
+		AddressLine4                      string `json:"AddressLine4"`
+		AddressLine5                      string `json:"AddressLine5"`
+		District                          string `json:"District"`
+		City                              string `json:"City"`
+		DifferentCity                     string `json:"DifferentCity"`
+		StreetPostalCode                  string `json:"StreetPostalCode"`
+		County                            string `json:"County"`
+		CompanyPostalCode                 string `json:"CompanyPostalCode"`
+		POBoxIndicator                    bool   `json:"POBoxIndicator"`
+		POBox                             string `json:"POBox"`
+		POBoxPostalCode                   string `json:"POBoxPostalCode"`
+		POBoxDeviatingCountryCode         string `json:"POBoxDeviatingCountryCode"`
+		POBoxDeviatingCountryCodeText     string `json:"POBoxDeviatingCountryCodeText"`
+		POBoxDeviatingStateCode           string `json:"POBoxDeviatingStateCode"`
+		POBoxDeviatingStateCodeText       string `json:"POBoxDeviatingStateCodeText"`
+		POBoxDeviatingCity                string `json:"POBoxDeviatingCity"`
+		TimeZoneCode                      string `json:"TimeZoneCode"`
+		TimeZoneCodeText                  string `json:"TimeZoneCodeText"`
+		Building                          string `json:"Building"`
+		Floor                             string `json:"Floor"`
+		Room                              string `json:"Room"`
+		Phone                             string `json:"Phone"`
+		Mobile                            string `json:"Mobile"`
+		Fax                               string `json:"Fax"`
+		Email                             string `json:"Email"`
+		WebSite                           string `json:"WebSite"`
+		LanguageCode                      string `json:"LanguageCode"`
+		LanguageCodeText                  string `json:"LanguageCodeText"`
+		BestReachedByCode                 string `json:"BestReachedByCode"`
+		BestReachedByCodeText             string `json:"BestReachedByCodeText"`
+		NormalisedPhone                   string `json:"NormalisedPhone"`
+		NormalisedMobile                  string `json:"NormalisedMobile"`
+		ETag                              string `json:"ETag"`
+	} `json:"PartnerAddressCollection"`
+	PartnerProgramsCollection struct {
+		ObjectID           string `json:"ObjectID"`
+		ParentObjectID     string `json:"ParentObjectID"`
+		PartnerProgram     string `json:"PartnerProgram"`
+		PartnerProgramText string `json:"PartnerProgramText"`
+		MembershipID       string `json:"MembershipID"`
+		PartnerType        string `json:"PartnerType"`
+		PartnerTypeText    string `json:"PartnerTypeText"`
+		Status             string `json:"Status"`
+		StatusText         string `json:"StatusText"`
+		AgreementStartDate string `json:"AgreementStartDate"`
+		AgreementEndDate   string `json:"AgreementEndDate"`
+	} `json:"PartnerProgramsCollection"`
+	PartnerProductDimensions struct {
+		ObjectID            string `json:"ObjectID"`
+		ParentObjectID      string `json:"ParentObjectID"`
+		DimensionStatus     string `json:"DimensionStatus"`
+		DimensionStatusText string `json:"DimensionStatusText"`
+		ProductID           string `json:"ProductID"`
+		StartDate           string `json:"StartDate"`
+		EndDate             string `json:"EndDate"`
+	} `json:"PartnerProductDimensions"`
+	PartnerContactCollection struct {
+		ObjectID            string `json:"ObjectID"`
+		ParentObjectID      string `json:"ParentObjectID"`
+		PartnerID           string `json:"PartnerID"`
+		PartnerContactID    string `json:"PartnerContactID"`
+		MainIndicator       bool   `json:"MainIndicator"`
+		DepartmentCode      string `json:"DepartmentCode"`
+		DepartmentCodeText  string `json:"DepartmentCodeText"`
+		FunctionCode        string `json:"FunctionCode"`
+		FunctionCodeText    string `json:"FunctionCodeText"`
+		VIPReasonCode       string `json:"VIPReasonCode"`
+		VIPReasonCodeText   string `json:"VIPReasonCodeText"`
+		EntityLastChangedOn string `json:"EntityLastChangedOn"`
+		ETag                string `json:"ETag"`
+	} `json:"PartnerContactCollection"`
 	APISchema   string   `json:"api_schema"`
 	Accepter    []string `json:"accepter"`
 	PartnerCode string   `json:"partner_code"`
 	Deleted     bool     `json:"deleted"`
 }
+

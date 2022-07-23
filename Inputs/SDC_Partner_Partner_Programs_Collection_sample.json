@@ -167,8 +167,8 @@
         "EntityLastChangedOn":"", 
         "ETag":""                
     },
-	"api_schema": "Partner",
-	"accepter": ["PartnerCollection"],
-	"partner_code": "1000410",
+    "api_schema": "Partner",
+	"accepter": ["PartnerProgramsCollection"],
+	"partner_code": "PG01",
 	"deleted": false
 }

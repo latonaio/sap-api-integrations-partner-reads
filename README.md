@@ -25,13 +25,21 @@ sap-api-integrations-partner-reads が対応する APIサービス は、次の�
 sap-api-integrations-partner-reads には、次の API をコールするためのリソースが含まれています。  
 
 * PartnerCollection（パートナー - パートナー）
+* PartnerAddressCollection（パートナー - パートナー宛先）
+* PartnerProgramsCollection（パートナー - パートナープログラム）
+* PartnerProductDimensions（パートナー - パートナー製品ディメンション）
+* PartnerContactCollection（パートナー - パートナー交際）
 
 ## API への 値入力条件 の 初期値
 sap-api-integrations-partner-reads において、API への値入力条件の初期値は、入力ファイルレイアウトの種別毎に、次の通りとなっています。  
 
 ### SDC レイアウト
 
-* inoutSDC.PartnerCollection.PartnerID（パートナーID）  
+* inoutSDC.PartnerCollection.PartnerID（パートナーID） 
+* inoutSDC.PartnerAddressCollection.CountryCode（カントリーコード）
+* inoutSDC.PartnerProgramsCollection.PartnerProgram（パートナープログラム）
+* inoutSDC.PartnerProductDimensions.DimensionStatus（ディメンションステータス）
+* inoutSDC.PartnerContactCollection.PartnerContactID（パートナー交際ID）  
 
 
 
@@ -46,7 +54,7 @@ accepter において 下記の例のように、データの種別（＝APIの�
 ここでは、"PartnerCollection" が指定されています。    
   
 ```
-	"api_schema": "PartnerPartnerCollection",
+	"api_schema": "Partner",
 	"accepter": ["PartnerCollection"],
 	"partner_code": "1000410",
 	"deleted": false
@@ -57,7 +65,7 @@ accepter において 下記の例のように、データの種別（＝APIの�
 全データを取得する場合、sample.json は以下のように記載します。  
 
 ```
-	"api_schema": "PartnerPartnerCollection",
+	"api_schema": "Partner",
 	"accepter": ["All"],
 	"partner_code": "1000410",
 	"deleted": false
@@ -69,7 +77,7 @@ accepter における データ種別 の指定に基づいて SAP_API_Caller �
 caller.go の func() 毎 の 以下の箇所が、指定された API をコールするソースコードです。  
 
 ```
-func (c *SAPAPICaller) AsyncGetPartner(partnerID string, accepter []string) {
+func (c *SAPAPICaller) AsyncGetPartner(partnerID, countryCode, partnerProgram, dimensionStatus, partnerContactID string, accepter []string) {
 	wg := &sync.WaitGroup{}
 	wg.Add(len(accepter))
 	for _, fn := range accepter {
@@ -77,6 +85,26 @@ func (c *SAPAPICaller) AsyncGetPartner(partnerID string, accepter []string) {
 		case "PartnerCollection":
 			func() {
 				c.PartnerCollection(partnerID)
+				wg.Done()
+			}()
+		case "PartnerAddressCollection":
+			func() {
+				c.PartnerAddressCollection(countryCode)
+				wg.Done()
+			}()
+		case "PartnerProgramsCollection":
+			func() {
+				c.PartnerProgramsCollection(partnerProgram)
+				wg.Done()
+			}()
+		case "PartnerProductDimensions":
+			func() {
+				c.PartnerProductDimensions(dimensionStatus)
+				wg.Done()
+			}()
+		case "PartnerContactCollection":
+			func() {
+				c.PartnerContactCollection(partnerContactID)
 				wg.Done()
 			}()
 		default:

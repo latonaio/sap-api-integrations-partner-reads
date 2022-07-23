@@ -168,7 +168,7 @@
         "ETag":""                
     },
 	"api_schema": "Partner",
-	"accepter": ["PartnerCollection"],
-	"partner_code": "1000410",
+	"accepter": ["PartnerAddressCollection"],
+	"partner_code": "US",
 	"deleted": false
 }

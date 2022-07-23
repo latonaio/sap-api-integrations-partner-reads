@@ -18,12 +18,17 @@ func main() {
 	accepter := inoutSDC.Accepter
 	if len(accepter) == 0 || accepter[0] == "All" {
 		accepter = []string{
-			"PartnerCollection",
+			"PartnerCollection", "PartnerAddressCollection", "PartnerProgramsCollection",
+			"PartnerProductDimensions", "PartnerContactCollection",
 		}
 	}
 
 	caller.AsyncGetPartner(
 		inoutSDC.PartnerCollection.PartnerID,
+		inoutSDC.PartnerAddressCollection.CountryCode,
+		inoutSDC.PartnerProgramsCollection.PartnerProgram,
+		inoutSDC.PartnerProductDimensions.DimensionStatus,
+		inoutSDC.PartnerContactCollection.PartnerContactID,
 		accepter,
 	)
 }
